@@ -37,7 +37,8 @@
     "lolex": "^2.3.2",
     "mockingoose": "2.4.0",
     "nodemon": "^2.0.1",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "typescript": "^3.7.2"
   },
   "jest": {
     "clearMocks": true,
