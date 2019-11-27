@@ -1,4 +1,6 @@
 {
+  "include": ["src/**/*"],                    /* @see https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#details */
+  "exclude": ["src/**/*.spec.ts"],            /* @see https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#details */
   "compilerOptions": {
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
