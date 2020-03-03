@@ -19,6 +19,8 @@ services:
       - REACT_APP_WS_URL=localhost
       - REACT_APP_WS_PORT=8080
       - REACT_APP_CLIENT_ID=${CLIENT_ID}
+      - REACT_APP_SPOTIFY_ID=${SPOTIFY_ID}
+      - REACT_APP_SPOTIFY_REDIRECT_URI=${SPOTIFY_REDIRECT_URI}
   jukebox-api:
     container_name: jukebox-api
     build:

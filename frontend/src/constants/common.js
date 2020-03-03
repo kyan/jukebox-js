@@ -10,6 +10,7 @@ export default {
   SEND: 'actionSend',
   STORE_TOKEN: 'actionStoreToken',
   CLEAR_STORE_TOKEN: 'actionClearStoreToken',
+  STORE_SPOTIFY_TOKEN: 'actionStoreSpotifyToken',
   UPDATE_VOLUME: 'actionUpdateVolume',
   UPDATE_PLAYBACK_STATE: 'actionPlaybackState',
   UPDATE_PROGRESS_TIMER: 'actionUpdateProgressTimer',

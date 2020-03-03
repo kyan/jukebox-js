@@ -13,6 +13,7 @@ import SocketErrorsHandler from 'handlers/socket-errors'
 import MopidyHandler from 'handlers/mopidy'
 import SearchHandler from 'handlers/search'
 import VoteHandler from 'handlers/voting'
+import SpotifyHandler from 'handlers/spotify'
 import AuthenticateHandler from 'handlers/authenticate'
 
 const app = express()
@@ -51,6 +52,12 @@ const allowSocketConnections = (mopidy) => {
 
       AuthenticateHandler(payload, socket)
         .then((updatedPayload) => VoteHandler(updatedPayload, socket.binary(false), socketio.binary(false)))
+    })
+
+    socket.on(MessageType.SPOTIFY, data => {
+      const payload = Payload.decode(data)
+      AuthenticateHandler(payload, socket)
+        .then((updatedPayload) => SpotifyHandler(updatedPayload, socket.binary(false), socketio.binary(false)))
     })
   })
 

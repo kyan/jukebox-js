@@ -1,9 +1,11 @@
 import * as actions from 'actions'
 import * as searchActions from 'search/actions'
+import * as spotifyActions from 'spotify/actions'
 import AuthApi from 'constants/auth-api'
 import MopidyApi from 'constants/mopidy-api'
 import SearchConst from 'search/constants'
 import VoteConst from 'votes/constants'
+import SpotifyConst from 'spotify/constants'
 import Payload from 'utils/payload'
 import notify from 'utils/notify'
 
@@ -41,8 +43,11 @@ const addTrackList = (tracklist, store) => {
 
 const onMessageHandler = (store, payload, progressTimer) => {
   const { key, data } = Payload.decode(payload)
-
   switch (key) {
+    case SpotifyConst.ADD_TOKEN:
+      console.error(`ADDING SPOTIFY`)
+      store.dispatch(spotifyActions.addToken(data))
+      break
     case AuthApi.AUTHENTICATION_TOKEN_INVALID:
       console.error(`AUTHENTICATION_TOKEN_INVALID: ${data.error}`)
       store.dispatch(actions.clearToken())

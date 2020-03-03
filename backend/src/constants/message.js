@@ -3,6 +3,7 @@ export default {
   MOPIDY: 'mopidy',
   SEARCH: 'search',
   VOTE: 'vote',
+  SPOTIFY: 'spotify',
   INCOMING_CORE: 'INCOMING MOPIDY [CORE]',
   INCOMING_CLIENT: 'INCOMING CLIENT',
   INCOMING_MOPIDY: 'INCOMING MOPIDY',

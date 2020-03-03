@@ -2,6 +2,7 @@ import io from 'socket.io-client'
 import * as actions from 'actions'
 import Constants from 'constants/common'
 import VoteConstant from 'votes/constants'
+import SpotifyConstant from 'spotify/constants'
 import SearchConst from 'search/constants'
 import { trackProgressTimer } from 'utils/time'
 import onMessageHandler from 'utils/on-message-handler'
@@ -32,10 +33,12 @@ const JukeboxMiddleware = (() => {
     const onMessage = data => onMessageHandler(store, data, progressTimer)
     const onSearchResults = data => onMessageHandler(store, data, progressTimer)
     const onVote = data => onMessageHandler(store, data, progressTimer)
+    const onSpotify = data => onMessageHandler(store, data, progressTimer)
     const onConnect = () => {
       if (socket != null) socket.close()
       socket = io(url, { transports: ['websocket'] })
       socket.on('vote', onVote)
+      socket.on('spotify', onSpotify)
       socket.on('search', onSearchResults)
       socket.on('mopidy', onMopidyStateChange)
       socket.on('message', onMessage)
@@ -60,6 +63,8 @@ const JukeboxMiddleware = (() => {
         return socket.emit('search', packMessage())
       case VoteConstant.VOTE:
         return socket.emit('vote', packMessage())
+      case SpotifyConstant.SPOTIFY:
+        return socket.emit('spotify', packMessage())
       default:
         return next(action)
     }

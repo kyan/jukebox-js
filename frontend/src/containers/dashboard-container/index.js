@@ -6,6 +6,7 @@ import SignInToken from 'utils/signin-token'
 import GoogleAuthContext from 'contexts/google'
 import * as actions from 'actions'
 import * as searchActions from 'search/actions'
+import * as spotifyActions from 'spotify/actions'
 import Dashboard from 'dashboard'
 
 export const DashboardContainer = () => {
@@ -18,6 +19,7 @@ export const DashboardContainer = () => {
   const googleTokenId = useRef()
   const refreshTokenTimeoutID = useRef()
   const hasTokenChanged = (token) => token !== googleTokenId.current
+  const spotifyCode = new URLSearchParams(window.location.search).get('code')
 
   useEffect(() => {
     dispatch(actions.wsConnect())
@@ -40,6 +42,11 @@ export const DashboardContainer = () => {
     googleTokenId.current = undefined
     SignInToken.clear(refreshTokenTimeoutID.current)
     dispatch(actions.clearToken())
+  }
+
+  if (isSignedIn && spotifyCode) {
+    dispatch(spotifyActions.addToken(spotifyCode))
+    window.location.assign("http://localhost:3001")
   }
 
   const onPlay = useCallback(() => dispatch(actions.startPlaying()), [dispatch])

@@ -30,6 +30,7 @@ export default {
     'playback.previous',
     'mixer.setVolume',
     'castVote',
-    'searchGetTracks'
+    'searchGetTracks',
+    'spotifyAddToken'
   ]
 }

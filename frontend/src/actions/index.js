@@ -127,6 +127,29 @@ export const getState = () => {
   }
 }
 
+export const getImage = (uri) => {
+  return {
+    type: Types.SEND,
+    key: MopidyApi.LIBRARY_GET_IMAGES,
+    params: [[uri]],
+    uri: uri
+  }
+}
+
+export const newImage = (uri) => {
+  return {
+    type: Types.NEW_IMAGE,
+    uri
+  }
+}
+
+export const resolveImage = (data) => {
+  return {
+    type: Types.RESOLVE_IMAGE,
+    data
+  }
+}
+
 export const getTrackList = () => {
   return {
     type: Types.SEND,

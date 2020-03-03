@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Button, Image } from 'semantic-ui-react'
+import { Button, Image, Icon } from 'semantic-ui-react'
 import GoogleAuthContext from 'contexts/google'
 import './index.css'
 
@@ -28,8 +28,25 @@ export const Settings = () => {
     )
   }
 
+  const spotifyAuthentication = googleUser && (
+    <a href={`https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_SPOTIFY_REDIRECT_URI}&scope=playlist-modify-public%20user-read-email&state=34fFs29kd09`}>
+      <Button
+        animated='vertical'
+        floated='right'
+      >
+        <Button.Content hidden>Spotify</Button.Content>
+        <Button.Content visible>
+          <Icon name='spotify' />
+        </Button.Content>
+      </Button>
+    </a>
+  )
+
   return (
-    <React.Fragment>{avatar}</React.Fragment>
+    <React.Fragment>
+      {avatar}
+      {spotifyAuthentication}
+    </React.Fragment>
   )
 }
 
